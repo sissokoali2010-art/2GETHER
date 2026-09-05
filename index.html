@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>2GETHER ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PeerJS -->
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =========================
+         ÉCRAN D'ACCUEIL
+    ========================== -->
+
+    <section id="welcomeScreen" class="screen active">
+
+        <div class="logo">
+            <div class="heart">❤️</div>
+            <h1>2GETHER</h1>
+            <p>Deux cœurs, une partie.</p>
+        </div>
+
+        <div class="card">
+
+            <h2>Bienvenue 👋</h2>
+
+            <p class="subtitle">
+                Crée ton profil pour commencer.
+            </p>
+
+            <input
+                type="text"
+                id="usernameInput"
+                placeholder="Ton pseudo"
+                maxlength="20"
+            >
+
+            <button id="continueBtn" class="primary">
+                Continuer →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ÉCRAN DE CONNEXION
+    ========================== -->
+
+    <section id="connectionScreen" class="screen">
+
+        <div class="topLogo">
+            ❤️ 2GETHER
+        </div>
+
+        <div class="connectionCard">
+
+            <h2>Connectez-vous à deux 🤝</h2>
+
+            <p>
+                Choisis une option.
+            </p>
+
+            <button id="createBtn" class="primary">
+                ➕ Créer une partie
+            </button>
+
+            <button id="joinBtn" class="secondary">
+                🔗 Rejoindre une partie
+            </button>
+
+            <!-- Création -->
+
+            <div id="createArea" class="hidden">
+
+                <p class="smallTitle">
+                    Ton code de connexion
+                </p>
+
+                <div id="roomCode" class="roomCode">
+                    ------
+                </div>
+
+                <button id="copyBtn" class="copyBtn">
+                    📋 Copier le code
+                </button>
+
+                <div class="waiting">
+                    <div class="loader"></div>
+                    <p>En attente de ton partenaire...</p>
+                </div>
+
+            </div>
+
+
+            <!-- Rejoindre -->
+
+            <div id="joinArea" class="hidden">
+
+                <p class="smallTitle">
+                    Entre le code de ton partenaire
+                </p>
+
+                <input
+                    type="text"
+                    id="codeInput"
+                    placeholder="Ex : 7XK92P"
+                    maxlength="6"
+                    autocomplete="off"
+                >
+
+                <button id="connectBtn" class="primary">
+                    ❤️ Se connecter
+                </button>
+
+            </div>
+
+            <p id="connectionStatus" class="status"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================== -->
+
+    <section id="dashboardScreen" class="screen">
+
+        <header>
+
+            <div>
+                <div class="appName">
+                    ❤️ 2GETHER
+                </div>
+
+                <div id="onlineStatus" class="online">
+                    ● Connectés
+                </div>
+            </div>
+
+            <button id="disconnectBtn" class="iconBtn">
+                ⚙️
+            </button>
+
+        </header>
+
+
+        <!-- COUPLE -->
+
+        <div class="coupleBox">
+
+            <div class="player">
+
+                <div id="myAvatar" class="avatar">
+                    👤
+                </div>
+
+                <strong id="myName">
+                    Moi
+                </strong>
+
+            </div>
+
+
+            <div class="heartCenter">
+                ❤️
+            </div>
+
+
+            <div class="player">
+
+                <div id="partnerAvatar" class="avatar">
+                    👤
+                </div>
+
+                <strong id="partnerName">
+                    Partenaire
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="statCard">
+
+                <span>💎</span>
+
+                <strong id="points">
+                    0
+                </strong>
+
+                <small>
+                    Points
+                </small>
+
+            </div>
+
+
+            <div class="statCard">
+
+                <span>🔥</span>
+
+                <strong id="streak">
+                    1
+                </strong>
+
+                <small>
+                    Streak
+                </small>
+
+            </div>
+
+
+            <div class="statCard">
+
+                <span>🏆</span>
+
+                <strong id="level">
+                    1
+                </strong>
+
+                <small>
+                    Niveau
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESSION -->
+
+        <div class="sectionTitle">
+            Notre progression
+        </div>
+
+        <div class="progressCard">
+
+            <div class="progressTop">
+
+                <strong>
+                    Niveau <span id="levelText">1</span>
+                </strong>
+
+                <span>
+                    <span id="levelPoints">0</span>/100
+                </span>
+
+            </div>
+
+            <div class="progressBar">
+
+                <div
+                    id="progress"
+                    class="progress"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVITÉS -->
+
+        <div class="sectionTitle">
+            Faire quelque chose ensemble ❤️
+        </div>
+
+
+        <div class="activities">
+
+            <button
+                class="activity"
+                data-game="quiz"
+            >
+
+                <div class="activityIcon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <strong>
+                        Qui connaît mieux l'autre ?
+                    </strong>
+
+                    <p>
+                        Répondez à une question.
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="activity"
+                data-game="challenge"
+            >
+
+                <div class="activityIcon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <strong>
+                        Défi rapide
+                    </strong>
+
+                    <p>
+                        Faites un petit défi.
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                class="activity"
+                data-game="question"
+            >
+
+                <div class="activityIcon">
+                    💬
+                </div>
+
+                <div>
+
+                    <strong>
+                        Question à deux
+                    </strong>
+
+                    <p>
+                        Découvrez vos réponses.
+                    </p>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- ACTIVITÉ -->
+
+        <div class="sectionTitle">
+            Activité récente
+        </div>
+
+        <div
+            id="activityFeed"
+            class="activityFeed"
+        >
+
+            <p>
+                ❤️ Votre aventure commence...
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================
+         MODAL JEU
+    ========================== -->
+
+    <div id="gameModal" class="modal hidden">
+
+        <div class="modalContent">
+
+            <button
+                id="closeModal"
+                class="close"
+            >
+                ✕
+            </button>
+
+            <div id="gameIcon" class="bigIcon">
+                ❤️
+            </div>
+
+            <h2 id="gameTitle">
+                Activité
+            </h2>
+
+            <p id="gameDescription">
+                ...
+            </p>
+
+            <button
+                id="completeGameBtn"
+                class="primary"
+            >
+                ✅ J'ai terminé
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         NOTIFICATION
+    ========================== -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        ❤️
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     SUPABASE
+========================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL =
+        "https://agxxxfzatxswulzgmnmy.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_Jv2XD63FiWFN6vchy1dVJg_-jwxPewj";
+
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+</script>
+
+
+<!-- Notre JavaScript -->
+<script src="app.js"></script>
+
+</body>
+</html>

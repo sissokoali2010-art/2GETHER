@@ -1,0 +1,550 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #09090f;
+    color: white;
+    min-height: 100vh;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 25px 18px;
+}
+
+.screen.active {
+    display: block;
+}
+
+
+/* =========================
+   ACCUEIL
+========================= */
+
+#welcomeScreen {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#welcomeScreen.active {
+    display: flex;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heart {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.logo h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+}
+
+.logo p {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.card,
+.connectionCard {
+    width: 100%;
+    max-width: 420px;
+    background: #14141d;
+    border: 1px solid #272735;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+
+.card h2,
+.connectionCard h2 {
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #999;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+    width: 100%;
+    background: #0d0d14;
+    border: 1px solid #30303d;
+    color: white;
+    padding: 16px;
+    border-radius: 14px;
+    outline: none;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #ff3b6b;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff3b6b, #ff174f);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.secondary {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    background: #20202b;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.primary:active,
+.secondary:active {
+    transform: scale(.98);
+}
+
+
+/* =========================
+   CONNECTION
+========================= */
+
+.topLogo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.connectionCard {
+    margin: auto;
+}
+
+.connectionCard > p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.smallTitle {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.roomCode {
+    background: #0b0b11;
+    border: 1px dashed #ff3b6b;
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 7px;
+    margin-top: 10px;
+}
+
+.copyBtn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    background: #242430;
+    color: white;
+    border-radius: 12px;
+}
+
+.waiting {
+    text-align: center;
+    margin-top: 25px;
+    color: #aaa;
+}
+
+.loader {
+    width: 25px;
+    height: 25px;
+    border: 3px solid #333;
+    border-top: 3px solid #ff3b6b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto auto 12px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.status {
+    text-align: center;
+    margin-top: 15px;
+    color: #ff6b8a !important;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+#dashboardScreen {
+    max-width: 600px;
+    margin: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.appName {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.online {
+    font-size: 12px;
+    color: #55e68a;
+    margin-top: 5px;
+}
+
+.iconBtn {
+    background: #1c1c27;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+}
+
+
+/* =========================
+   COUPLE
+========================= */
+
+.coupleBox {
+    background: linear-gradient(
+        135deg,
+        #1b1017,
+        #15151f
+    );
+
+    border: 1px solid #30212a;
+    border-radius: 24px;
+    padding: 25px 15px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.player {
+    text-align: center;
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+    background: #252532;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: auto auto 8px;
+}
+
+.heartCenter {
+    font-size: 35px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.statCard {
+    background: #15151e;
+    border: 1px solid #282834;
+    border-radius: 18px;
+    padding: 15px 5px;
+    text-align: center;
+}
+
+.statCard span {
+    display: block;
+    font-size: 23px;
+}
+
+.statCard strong {
+    display: block;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.statCard small {
+    color: #888;
+}
+
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.sectionTitle {
+    margin: 25px 0 12px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.progressCard {
+    background: #15151e;
+    border: 1px solid #282834;
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.progressTop {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #bbb;
+}
+
+.progressBar {
+    width: 100%;
+    height: 10px;
+    background: #292934;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        #ff3b6b,
+        #ff7798
+    );
+    border-radius: 20px;
+    transition: width .5s;
+}
+
+
+/* =========================
+   ACTIVITÉS
+========================= */
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity {
+    width: 100%;
+    background: #15151e;
+    border: 1px solid #282834;
+    border-radius: 18px;
+    padding: 15px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    text-align: left;
+}
+
+.activity:hover {
+    border-color: #ff3b6b;
+}
+
+.activityIcon {
+    width: 48px;
+    height: 48px;
+    background: #252530;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+.activity div:nth-child(2) {
+    flex: 1;
+}
+
+.activity p {
+    color: #888;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   FEED
+========================= */
+
+.activityFeed {
+    background: #15151e;
+    border: 1px solid #282834;
+    border-radius: 18px;
+    padding: 16px;
+    color: #bbb;
+    font-size: 14px;
+}
+
+.feedItem {
+    padding: 10px 0;
+    border-bottom: 1px solid #25252f;
+}
+
+.feedItem:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    z-index: 100;
+}
+
+.modalContent {
+    width: 100%;
+    max-width: 400px;
+    background: #171720;
+    border: 1px solid #30303d;
+    border-radius: 25px;
+    padding: 30px 22px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: #292934;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.bigIcon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.modalContent p {
+    color: #aaa;
+    line-height: 1.5;
+    margin: 15px 0;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(100px);
+
+    background: #252530;
+    padding: 14px 20px;
+    border-radius: 30px;
+
+    opacity: 0;
+    transition: .3s;
+
+    z-index: 200;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+@media (min-width: 600px) {
+
+    body {
+        background: #050509;
+    }
+
+    .screen {
+        padding-top: 50px;
+    }
+
+}
